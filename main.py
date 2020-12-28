@@ -4,17 +4,16 @@ import random
 import smtplib
 import datetime as dt
 
-# 1. Update the birthdays.csv
+my_email = "dimitryps3@hotmail.com"
+password = "----------"
 
-# 2. Check if today matches a birthday in the birthdays.csv
+
 data_frame = pandas.read_csv("birthdays.csv")
 print(data_frame)
 dic = data_frame.to_dict(orient="records")
 
 for birth in dic:
     if birth["month"] == dt.datetime.now().month and birth["day"] == dt.datetime.now().day:
-        my_email = "dimitryps3@hotmail.com"
-        password = "----------"
 
         with smtplib.SMTP("smtp.live.com") as connection:
             connection.starttls()
